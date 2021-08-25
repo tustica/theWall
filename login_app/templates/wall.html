@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/wall.css">
+    <title>The Wall</title>
+</head>
+<body>
+    <div class="header">
+        <h1 id="wall_name">{{user.first_name}}'s Wall</h1>
+        <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+    </div>
+    <div class="container">
+        <div class="post_message">
+            <h2>Post a message</h2>
+            <form action="/add-post" method=POST class="post-message-form">
+                {% csrf_token %}
+                <textarea name="post-message-text" id="post-message-text" cols="60" rows="7"></textarea>
+                <button id="post-message-button">Post a message</button>
+            </form>
+        </div>
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post">
+                    <h3>{{post.user.first_name}} {{post.user.last_name}} - {{post.created_at}}</h3>
+                    <h4 class="post-text">{{post.post_message}}</h4>
+                    {% for comment in comments %}
+                        {% if comment.post.id == post.id %}
+                            <p class="comments">{{comment.user.first_name}} - {{comment.comment_message}}</p>
+                            <p id="new-comment"></p>
+                        {% endif %}
+                    {% endfor %}
+                    <form action="/add-comment" method="POST" id="comment-form">
+                        {% csrf_token %}
+                        <textarea name="comment-message-text" id="comment-message-text" cols="30" rows="2"></textarea>
+                        <input type="hidden" name="post-id" value="{{post.id}}">
+                        <input type="hidden" name="user-id" value="{{request.session.userid}}">
+                        <button onclick="log()" id="comment-message-button">Comment</button>
+                    </form>
+                </div>
+            {% endfor %}
+            <p></p>
+        </div>
+    </div>
+    <script src="/static/wall.js"></script>
+</body>
+</html>

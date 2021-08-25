@@ -1,0 +1,73 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: grey;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#wall_name{
+    color: white;
+    font-size: 35px;
+}
+
+
+.post_message{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.post-message-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#post-message-button{
+    margin-top: 10px;
+    width: 45%;
+    height: 25px;
+    background-color: green;
+    color: white;
+}
+#comment-message-button{
+    margin-top: 10px;
+    width: 25%;
+    height: 25px;
+    color: white;
+    background-color: blue;
+}
+
+#comment-form{
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    margin-right: 20%;
+}
+
+.posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post{
+    display: flex;
+    flex-direction: column;
+}
+
+.post-text{
+    margin: 0px 0px 5px 35px;
+}
+
+.comments{
+    color: grey;
+    font-weight: 600;
+    margin: 5px 0px 5px 70px;
+    border-bottom:  1px solid black;
+    
+}

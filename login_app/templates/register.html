@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="/static/login_and_register.css">
+
+    <!-- Load Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    
+    <title>Register</title>
+</head>
+<body>
+    <form action="/register_process" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <h1>Register</h1>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" class="form-control">
+
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" class="form-control">
+
+            <label for="email">Email</label>
+            <input type="text" name="email" class="form-control">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" autocomplete="new-password" class="form-control">
+
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" class="form-control">
+
+            <label for="birthday">Birthday</label>
+            <input type="date" name="birthday" class="form-control">
+
+            <div class="button_container">
+                <button class="btn btn-primary btn-lg">Register</button>
+            </div>
+                    
+        </div>
+    </form>
+    <div class="error-messages">
+        {% if messages %}
+            <ul class="alert-danger">
+                {% for message in messages %}
+                    <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
